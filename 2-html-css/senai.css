@@ -1,0 +1,28 @@
+body {
+    /* background-color: aliceblue; */
+    background-image: url(https://play-lh.googleusercontent.com/JGLKAWqz0HlRexEDVLEMJVUycs6yr0zQkM1ibX4PaDCPc-kjQ4VsLTOPGdZM3O-TbshG5X5lumr9VAWM4sJL=w240-h480-rw);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+
+}
+
+h1 {
+    text-align: center;
+    color: royalblue;
+    font-size: 40px;
+    font-family: cursive;
+}
+
+p {
+    text-align: justify;
+    color: black;
+    font-family: fantasy;
+}
+
+P {
+    text-align: center;
+    color: royalblue;
+    font-family: cursive;
+}
+
