@@ -1,0 +1,300 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    color-scheme: dark;
+    --blue: #38a8ff;
+    --blue-bright: #77d7ff;
+    --paper: #edf5ff;
+    --muted: #9aacc2;
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    padding: 72px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    background: #05080e;
+    color: var(--paper);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body::before,
+body::after {
+    position: fixed;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+}
+
+body::before {
+    z-index: -2;
+    background-image:
+        linear-gradient(rgba(96, 161, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 161, 255, 0.045) 1px, transparent 1px),
+        radial-gradient(ellipse at 18% 30%, rgba(0, 105, 255, 0.32), transparent 35%),
+        radial-gradient(ellipse at 82% 68%, rgba(0, 195, 255, 0.2), transparent 32%),
+        linear-gradient(135deg, #05080e 0%, #0b1423 52%, #05080e 100%);
+    background-size: 52px 52px, 52px 52px, 150% 150%, 150% 150%, 100% 100%;
+    animation: blue-ambient 22s ease-in-out infinite alternate;
+}
+
+body::after {
+    z-index: -1;
+    background:
+        linear-gradient(90deg, rgba(3, 6, 11, 0.5), rgba(3, 6, 11, 0.12) 55%, rgba(3, 6, 11, 0.42)),
+        linear-gradient(0deg, rgba(3, 6, 11, 0.5), transparent 55%, rgba(3, 6, 11, 0.2));
+}
+
+body > h1,
+body > label,
+body > input,
+body > button,
+body > #resultado-aqui {
+    position: relative;
+    z-index: 1;
+}
+
+.math-symbols {
+    position: fixed;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.math-symbols span {
+    position: absolute;
+    color: var(--blue-bright);
+    font-size: 2.8rem;
+    font-weight: 800;
+    opacity: 0.24;
+    text-shadow: 0 0 22px rgba(56, 168, 255, 0.8);
+    animation: symbol-float 8s ease-in-out infinite;
+}
+
+.math-symbols span:nth-child(1) {
+    top: 16%;
+    left: 12%;
+}
+
+.math-symbols span:nth-child(2) {
+    top: 24%;
+    right: 14%;
+    animation-delay: -2s;
+    animation-duration: 10s;
+}
+
+.math-symbols span:nth-child(3) {
+    bottom: 24%;
+    left: 17%;
+    animation-delay: -4s;
+    animation-duration: 9s;
+}
+
+.math-symbols span:nth-child(4) {
+    right: 12%;
+    bottom: 16%;
+    animation-delay: -1s;
+    animation-duration: 11s;
+}
+
+h1 {
+    width: min(100%, 620px);
+    margin-bottom: 34px;
+    color: var(--blue-bright);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 0.95;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 0 24px rgba(56, 168, 255, 0.45), 0 4px 22px rgba(0, 0, 0, 0.7);
+}
+
+label {
+    width: min(100%, 620px);
+    margin-bottom: 10px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+}
+
+input,
+button {
+    width: min(100%, 620px);
+    min-height: 54px;
+    border-radius: 4px;
+    font: inherit;
+}
+
+input {
+    margin-bottom: 14px;
+    padding: 0 16px;
+    border: 1px solid rgba(56, 168, 255, 0.42);
+    outline: none;
+    background: rgba(5, 10, 18, 0.88);
+    color: var(--paper);
+    font-size: 1.1rem;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input::placeholder {
+    color: #74869e;
+}
+
+input:focus {
+    border-color: var(--blue-bright);
+    box-shadow: 0 0 0 3px rgba(56, 168, 255, 0.18);
+}
+
+button {
+    border: 0;
+    background: var(--blue);
+    color: #04101c;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 160ms ease, background-color 160ms ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    background: var(--blue-bright);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid var(--blue-bright);
+    outline-offset: 3px;
+}
+
+#resultado-aqui {
+    width: min(100%, 620px);
+    margin-top: 28px;
+    padding: 22px 24px;
+    border: 1px solid rgba(56, 168, 255, 0.24);
+    border-left: 4px solid var(--blue);
+    background: rgba(6, 12, 21, 0.92);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.48), 0 0 32px rgba(0, 107, 255, 0.08);
+    animation: arrive 420ms ease both;
+}
+
+#resultado-aqui h2 {
+    margin-bottom: 14px;
+    color: var(--blue-bright);
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+#resultado-aqui p {
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(207, 226, 255, 0.12);
+    color: var(--paper);
+    font-variant-numeric: tabular-nums;
+}
+
+#resultado-aqui p:last-child {
+    border-bottom: 0;
+}
+
+@keyframes blue-ambient {
+    from {
+        background-position: 0 0, 0 0, 0% 40%, 100% 60%, center;
+    }
+
+    to {
+        background-position: 26px 18px, 18px 26px, 100% 60%, 0% 40%, center;
+    }
+}
+
+@keyframes symbol-float {
+    0%,
+    100% {
+        opacity: 0.16;
+        transform: translate3d(0, 0, 0) rotate(-8deg);
+    }
+
+    50% {
+        opacity: 0.42;
+        transform: translate3d(12px, -22px, 0) rotate(10deg);
+    }
+}
+
+@keyframes arrive {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 48px 18px;
+    }
+
+    body::before {
+        background-size: 40px 40px, 40px 40px, 180% 180%, 180% 180%, 100% 100%;
+    }
+
+    body::after {
+        background: rgba(3, 6, 11, 0.42);
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .math-symbols span {
+        font-size: 2rem;
+    }
+
+    .math-symbols span:nth-child(1) {
+        left: 6%;
+    }
+
+    .math-symbols span:nth-child(2) {
+        right: 6%;
+    }
+
+    .math-symbols span:nth-child(3) {
+        left: 8%;
+    }
+
+    .math-symbols span:nth-child(4) {
+        right: 8%;
+    }
+
+    #resultado-aqui {
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
