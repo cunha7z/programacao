@@ -1,0 +1,50 @@
+:root {
+  --ink: #20143c;
+  --cream: #fff8ed;
+  --pink: #ff4f9a;
+  --cyan: #45d9e8;
+  --yellow: #ffd166;
+  --heading: Impact, Haettenschweiler, "Arial Black", sans-serif;
+  --sans: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: #17102e;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(33, 20, 65, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(33, 20, 65, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, #ffb4d1 0%, #f9d5a7 48%, #73dbe2 100%);
+  background-size: 32px 32px, 32px 32px, auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
